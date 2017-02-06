@@ -47,10 +47,11 @@ struct sparse_file *f2fs_sparse_file;
 extern int dlopenf2fs();
 
 static void reset_f2fs_info() {
+        int fd;
 	// Reset all the global data structures used by make_f2fs so it
 	// can be called again.
 	memset(&config, 0, sizeof(config));
-	config.fd = -1;
+	fd = -1;
 	if (f2fs_sparse_file) {
 		sparse_file_destroy(f2fs_sparse_file);
 		f2fs_sparse_file = NULL;
